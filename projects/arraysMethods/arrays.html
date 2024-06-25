@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <ul id="nav">
+            <li><a href="../../index.html">home</a></li>
+            <li><a href="">Guess a number gam</a>e</li>
+            <li>Dark and Light page mode</li>
+            <li>array methods - filtrando strings</li>
+            <li>random color com eventos</li>
+            <li>image gallery</li>
+            <li>tasks list</li>
+            <li>using json data with fetch from local server</li>
+            <li>resume main dom methods</li>
+        </ul>
+    </nav>
+    
+    <h1>Arrays</h1>
+    <button id="displayMonths">Display months</button>
+    <button id="hideMonths">Hide Months</button>
+    <button id="UCase">Upper Case</button><br>
+    <label for="inputFilter">Enter a letter to filter months that start with this letter:</label>
+    <input type="text" id="inputFilter">
+    <button id="btnFilter">filter</button>
+    
+    <div id="arrayContainer">
+    </div>
+
+    <div id="filteredContainer"></div>
+
+    <script>
+        const months = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
+        const arrayContainer = document.querySelector("#arrayContainer");
+        const btnDisplayMonths = document.querySelector("#displayMonths");
+        const btnHideMonths = document.querySelector("#hideMonths");
+        const btnUpper = document.querySelector("#UCase");
+        const filteredContainer = document.querySelector("#filteredContainer");
+        const inputFilter = document.querySelector("#inputFilter");
+        const btnFilter = document.querySelector("#btnFilter");
+
+        function displayMonths(){
+            for(const month of months){
+                let p = document.createElement("p");
+                p.textContent = month;
+                arrayContainer.appendChild(p);
+            
+            }
+        }
+
+        function hideMonths(){
+            p = document.querySelectorAll("p");
+            console.log(p)
+            while(arrayContainer.firstChild){
+                arrayContainer.removeChild(arrayContainer.firstChild);
+            }
+            //arrayContainer.parentNode.removeChild(p);
+        }
+
+        btnDisplayMonths.addEventListener("click", displayMonths);
+        btnHideMonths.addEventListener("click", hideMonths);
+
+        btnUpper.addEventListener("click", ()=>{
+            console.log(months.map((month)=>month.toUpperCase()));
+        })
+
+        let resultFiltered = months.filter((month) => month.startsWith("j"));
+        console.log(resultFiltered);
+        console.log(months.filter((month) => month.length > 5));
+
+        function filterMonths(){
+            let result = months.filter((month) => month.startsWith(inputFilter.value));
+            parag = document.createElement("p");
+            parag.textContent = result;
+            filteredContainer.appendChild(parag);
+        }
+
+        btnFilter.addEventListener("click", filterMonths);
+
+        //months.map((month) => console.log(month));
+        let numb = 30;
+        let i = numb -1;
+        let p1 = "não é primo";
+        let p2 = "é primo";
+        let phrase;
+        while(i>1){
+            if(numb % i == 0){
+                //console.log("nao é primo");
+                phrase = p1;
+                break;
+            }
+            phrase = p2;
+            i--;
+        }
+        console.log(phrase);
+
+    </script>
+</body>
+</html>
