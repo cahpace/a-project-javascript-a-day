@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>screen mode</title>
+    <link rel="stylesheet" href="modeStyle.css">
+</head>
+<body>
+    <nav>
+        <ul id="nav">
+            <li><a href="../../index.html">home</a></li>
+            <li><a >Guess a number gam</a></li>
+            <li>Dark and Light page mode</li>
+            <li>array methods - filtrando strings</li>
+            <li>random color com eventos</li>
+            <li>image gallery</li>
+            <li>tasks list</li>
+            <li>using json data with fetch from local server</li>
+            <li>resume main dom methods</li>
+        </ul>
+    </nav>
+
+    <p>select the page theme</p>
+    <select name="" id="selectTheme">
+        <option value="">choose a mode...</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+
+    <script>
+        //criar classes com dom para dark and light
+        //criar tambem um select para mensagens
+        //depois puxar valores do select de um json
+
+        const select = document.querySelector("select");
+        let option = select.value;
+        //console.log(select.value)
+
+        let optionAdd = document.createElement("option");
+        optionAdd.text = "gray";
+        select.add(optionAdd);
+        
+        function setMode(){
+            if (select.value === "light"){
+                document.body.style.backgroundColor = "white";
+                document.body.style.color = "black"
+            } else if (select.value === "dark"){
+                document.body.style.backgroundColor = "black";
+                document.body.style.color = "white";
+            }
+        }
+        select.addEventListener("change", setMode);
+    </script>
+</body>
+</html>
