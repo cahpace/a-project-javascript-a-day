@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess a number game</title>
+    <link rel="stylesheet" href="./guessNumberGameStyle.css">
+</head>
+<body>
+    <nav>
+        <!--https://www.w3schools.com/howto/howto_js_dropdown.asp-->
+        <ul id="nav">
+            <li><a href="../../index.html">home</a></li>
+            <li><a href="">Guess a number gam</a></li>
+            <li>Dark and Light page mode</li>
+            <li>array methods - filtrando strings</li>
+            <li>random color com eventos</li>
+            <li>image gallery</li>
+            <li>tasks list</li>
+            <li>using json data with fetch from local server</li>
+            <li>resume main dom methods</li>
+            <li><a href="../form/formJS.html">form</a></li>
+        </ul>
+    </nav>
+
+    <h1>Guess the number game</h1>
+    <section>
+    <p>A random number between 1 and 100 was generated. Try guessing it in 10 turns or fewer. The game will tell you if you guess was too low or to high</p>
+
+    <div id="interactionDiv">
+        <input type="number" id="guessInput">
+        <button id="guessButton">guess</button>
+        <button id="restartButton" disabled="true">restart game</button>
+    </div>
+
+    <div id="wrongOrRightMessage"></div>
+
+    <p>Previous guesses:</p>
+    <div id="guessedNumbersContainer">
+
+    </div>
+    <!--https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/A_first_splash-->
+    <!--cor para errou e acertou
+        put some color on
+    -->
+</section>
+    <script>
+        const inputGuess = document.querySelector("#guessInput");
+        const buttonGuess = document.querySelector("#guessButton");
+        const buttonRestart = document.querySelector("#restartButton");
+        const message = document.querySelector("#wrongOrRightMessage");
+        const guessesContainer = document.querySelector("#guessedNumbersContainer");
+
+        let randomNumber = Math.floor((Math.random() *100) +1);
+        console.log(randomNumber);
+        let counter = 1;     
+
+        function validateGuess(){
+            let p = "";
+    
+            if(inputGuess.value <= 0){
+                p = guessesContainer.appendChild(document.createElement("p"));
+                p.textContent = `numero recisa ser maior que zero`;
+                
+            }else if(counter < 10){
+                if(inputGuess.value > randomNumber){
+                    isHigh();
+
+                } else if (inputGuess.value < randomNumber){
+                    isLow();
+                    
+                } else if (inputGuess.value == randomNumber){
+                    youWin();
+                }
+
+            }else if(counter == 10){
+
+                if(inputGuess.value > randomNumber){
+                    isHigh();
+                    outOfTurns();
+
+                } else if (inputGuess.value < randomNumber){
+                    isLow();
+                    outOfTurns();
+                }
+            }
+
+            inputGuess.value = "";
+            inputGuess.focus();
+            counter++; 
+            console.log(counter);
+        }
+
+        function restartGame(){
+            window.location.reload();
+        }
+
+        function youWin(){
+            p = guessesContainer.appendChild(document.createElement("p"));
+            p.textContent = "Congratulations! You win!";
+            buttonGuess.disabled = true;
+            buttonRestart.disabled = false;
+        }
+
+        function isLow(){
+            p = guessesContainer.appendChild(document.createElement("p"));
+            p.textContent = `${counter} guess: ${inputGuess.value} - too low`;
+        }
+
+        function isHigh(){
+            p = document.createElement("p");
+            p.textContent = `${counter} guess: ${inputGuess.value} - too high`;
+            guessesContainer.appendChild(p);
+        }
+
+        function outOfTurns(){
+            p = guessesContainer.appendChild(document.createElement("p"));
+            p.textContent = "You are out of turns. Try again";
+            buttonGuess.disabled = true;
+            buttonRestart.disabled = false;
+        }
+
+        buttonGuess.addEventListener("click", validateGuess);
+        buttonRestart.addEventListener("click", restartGame);
+
+    </script>
+
+</body>
+</html>

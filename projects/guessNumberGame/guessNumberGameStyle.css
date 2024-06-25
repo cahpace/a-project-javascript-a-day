@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ul,
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color: aliceblue;
+}
+#nav{
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(89, 89, 235);
+    padding: 2rem 4rem;
+    color: aliceblue;
+}
+
+h1{
+    text-align: center;
+    margin: 1.5rem 0;
+}
+section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#interactionDiv{
+    display: flex;
+    flex-direction: row;
+    margin: 2rem 0;
+}
+#guessInput{
+    margin-right: 0.7rem;
+}
+button{
+    margin-right: 0.4rem;
+    padding: 0.1rem 0.6rem;
+}
+p{
+    max-width: 50%;
+}
