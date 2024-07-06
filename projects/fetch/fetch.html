@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <a href="../../index.html">home</a> 
+   <h1>functions async</h1>
+   <div></div>
+
+   <ul id="container">
+
+   </ul>
+
+
+   <script>
+    // const result = fetch('./data.json');
+    // result.then((data) => data.json())
+    // .then((data) => console.log(data.members[0].name))
+
+    const container = document.querySelector("div");
+
+    async function getData(){
+        let p = document.createElement("p");
+        const resultData = await fetch('./data.json')
+                                    .then((data) => data.json())
+                                    //.then((data) => console.log(data.members[0].name));
+                                    .then((data) => p.textContent = (data.members[0].name));
+        //const result = resultData;
+        
+        //p.textContent = resultData;
+        container.appendChild(p);
+    }
+
+    getData();
+
+    const listContainer = document.querySelector("#container");
+
+    fetch('./data.json')
+    .then((data) => data.json())
+    .then((data) => {
+        const list = data.members;
+       for (let item of list){
+        let li = document.createElement("li");
+        li.textContent = item.name;
+        listContainer.appendChild(li);
+       } 
+    })
+
+   </script>
+</body>
+</html>
