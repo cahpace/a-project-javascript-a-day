@@ -39,7 +39,7 @@
                 <textarea name="user_message" id="msg">Default value</textarea>
             </li>
             <li>
-                <button>Send</button>
+                <button type="submit" id="btnSubmit">Send</button>
             </li>
             <!--<li>
                 <input type="submit">
@@ -48,5 +48,18 @@
     </form>
 </section>
     
+<script>
+    const btnSubmit = document.querySelector("#btnSubmit");
+    const inputEmail = document.querySelector("#email");
+
+    btnSubmit.addEventListener("submit", (e) => {
+        if(inputEmail.value == ""){
+        e.preventDefault();
+        }
+    })
+
+
+</script>
+
 </body>
 </html>
