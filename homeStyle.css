@@ -3,6 +3,16 @@
     padding: 0;
     box-sizing: border-box;
 }
+:root{
+    --yellow-primary: #F2E205;
+    --yellow-second: #D7F205;
+    --blue-primary: #5581D9;
+    --blue-second:#5E88BF;
+    --black: #262626;
+}
+body{
+    background-color: var(--blue-primary) !important;
+}
 ul,
 li{
     list-style: none;
@@ -13,7 +23,7 @@ a{
     color: aliceblue;
 }
 .navbar{
-    background-color: rgb(89, 89, 235) !important;
+    background-color: var(--yellow-primary) !important;
     padding: 2rem 4rem;
 }
 
