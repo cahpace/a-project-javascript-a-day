@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="../../index.html">home</a>
+
+    <h1>Random background color generator</h1>
+
+    <button id="btnGenerate">generate random color</button>
+    <button id="btnBack">Go back to default background</button>
+    <button id="colorbtn">change the color of this button</button>
+
+    <script>
+        const btnGenerate = document.querySelector("#btnGenerate");
+        const btnBack = document.querySelector("#btnBack");
+        const colorbtn = document.querySelector("#colorbtn");
+
+        function generateRandomColor(number){
+            return Math.floor(Math.random()*(number + 1));
+        }
+
+        function changeBackgroundColor(){
+            document.body.style.backgroundColor = `rgb(${generateRandomColor(255)}, ${generateRandomColor(255)}, ${generateRandomColor(255)})`;
+        }
+
+        // function changeBack(){
+        //     document.body.style.backgroundColor = 'white';
+        // }
+
+        btnGenerate.addEventListener("click", changeBackgroundColor);
+        btnBack.addEventListener("click", () => {
+            document.body.style.backgroundColor = "white";
+        });
+
+        function changeButtonColor(e){
+            let randomColor =  `rgb(${generateRandomColor(255)}, ${generateRandomColor(255)}, ${generateRandomColor(255)})`;
+            e.target.style.backgroundColor = randomColor;
+        }
+
+        colorbtn.addEventListener("click", changeButtonColor);
+        //document.body.addEventListener("click", changeButtonColor);
+
+    </script>
+</body>
+</html>
