@@ -9,12 +9,12 @@ li{
 }
 a{
     text-decoration: none;
-    color: aliceblue;
+    color: black;
 }
 #nav{
     display: flex;
     flex-direction: row;
-    background-color: rgb(89, 89, 235);
+    background-color: #F2E205;
     padding: 2rem 4rem;
-    color: aliceblue;
+    color: black;
 }
