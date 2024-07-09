@@ -4,25 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guess a number game</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="./guessNumberGameStyle.css">
+    <script src="./guessNumerGameScript.js" defer></script>
 </head>
 <body>
     <nav>
         <!--https://www.w3schools.com/howto/howto_js_dropdown.asp-->
-        <ul id="nav">
-            <li><a href="../../index.html">home</a></li>
-            <li><a href="">Guess a number gam</a></li>
-            <li>Dark and Light page mode</li>
-            <li>array methods - filtrando strings</li>
-            <li>random color com eventos</li>
-            <li>image gallery</li>
-            <li>tasks list</li>
-            <li>using json data with fetch from local server</li>
-            <li>resume main dom methods</li>
-            <li><a href="../form/formJS.html">form</a></li>
-        </ul>
-    </nav>
 
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="../../index.html">Home</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="./guessNumberGame.html">Game Guess a Number</a>
+                      </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          DOM
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="../randomColors/randomColors.html">Random color with events</a></li>
+                          <li><a class="dropdown-item" href="#">image gallery</a></li>
+                          <li><a class="dropdown-item" href="../taskList/taskList.html">tasks list</a></li>
+                        </ul>
+                      </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Others
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="../arraysMethods/arrays.html">arrays</a></li>
+                      <li><a class="dropdown-item" href="../fetch/fetch.html">using json data with fetch from local server</a></li>
+                      <li><a class="dropdown-item" href="../DarkLightMode/DarkLightMode.html">Dark and Light page mode</a></li>
+                      <li><a class="dropdown-item" href="#">resume main dom methods</a></li>
+                      <li><a class="dropdown-item" href="../alertBox/alert.html">An alert box</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="../form/formJS.html">Web form</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        
     <h1>Guess the number game</h1>
     <section>
     <p>A random number between 1 and 100 was generated. Try guessing it in 10 turns or fewer. The game will tell you if you guess was too low or to high</p>
@@ -44,86 +76,7 @@
         put some color on
     -->
 </section>
-    <script>
-        const inputGuess = document.querySelector("#guessInput");
-        const buttonGuess = document.querySelector("#guessButton");
-        const buttonRestart = document.querySelector("#restartButton");
-        const message = document.querySelector("#wrongOrRightMessage");
-        const guessesContainer = document.querySelector("#guessedNumbersContainer");
-
-        let randomNumber = Math.floor((Math.random() *100) +1);
-        console.log(randomNumber);
-        let counter = 1;     
-
-        function validateGuess(){
-            let p = "";
-    
-            if(inputGuess.value <= 0){
-                p = guessesContainer.appendChild(document.createElement("p"));
-                p.textContent = `numero recisa ser maior que zero`;
-                
-            }else if(counter < 10){
-                if(inputGuess.value > randomNumber){
-                    isHigh();
-
-                } else if (inputGuess.value < randomNumber){
-                    isLow();
-                    
-                } else if (inputGuess.value == randomNumber){
-                    youWin();
-                }
-
-            }else if(counter == 10){
-
-                if(inputGuess.value > randomNumber){
-                    isHigh();
-                    outOfTurns();
-
-                } else if (inputGuess.value < randomNumber){
-                    isLow();
-                    outOfTurns();
-                }
-            }
-
-            inputGuess.value = "";
-            inputGuess.focus();
-            counter++; 
-            console.log(counter);
-        }
-
-        function restartGame(){
-            window.location.reload();
-        }
-
-        function youWin(){
-            p = guessesContainer.appendChild(document.createElement("p"));
-            p.textContent = "Congratulations! You win!";
-            buttonGuess.disabled = true;
-            buttonRestart.disabled = false;
-        }
-
-        function isLow(){
-            p = guessesContainer.appendChild(document.createElement("p"));
-            p.textContent = `${counter} guess: ${inputGuess.value} - too low`;
-        }
-
-        function isHigh(){
-            p = document.createElement("p");
-            p.textContent = `${counter} guess: ${inputGuess.value} - too high`;
-            guessesContainer.appendChild(p);
-        }
-
-        function outOfTurns(){
-            p = guessesContainer.appendChild(document.createElement("p"));
-            p.textContent = "You are out of turns. Try again";
-            buttonGuess.disabled = true;
-            buttonRestart.disabled = false;
-        }
-
-        buttonGuess.addEventListener("click", validateGuess);
-        buttonRestart.addEventListener("click", restartGame);
-
-    </script>
-
+   
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -3,20 +3,28 @@
     padding: 0;
     box-sizing: border-box;
 }
+:root{
+    --yellow-primary: #F2E205;
+    --yellow-second: #D7F205;
+    --blue-primary: #5581D9;
+    --blue-second:#5E88BF;
+    --black: #262626;
+}
+body{
+    background-color: var(--blue-primary) !important;
+}
 ul,
 li{
     list-style: none;
+    margin-left: 0.3rem;
 }
 a{
     text-decoration: none;
     color: aliceblue;
 }
-#nav{
-    display: flex;
-    flex-direction: row;
-    background-color: rgb(89, 89, 235);
+.navbar{
+    background-color: var(--yellow-primary) !important;
     padding: 2rem 4rem;
-    color: aliceblue;
 }
 
 h1{
