@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --yellow-primary: #F2E205;
+    --yellow-second: #D7F205;
+    --blue-primary: #5581d9;
+    --blue-second:#5E88BF;
+    --black: #262626;
+}
+body{
+    background-color: var(--blue-primary);
+}
+ul,
+li{
+    list-style: none;
+    margin-left: 0.3rem;
+}
+a{
+    text-decoration: none;
+    color: aliceblue;
+}
+.navbar{
+    background-color: var(--yellow-primary) !important;
+    padding: 2rem 4rem;
+}
+
+h1{
+    text-align: center;
+    margin: 1.5rem 0;
+}
